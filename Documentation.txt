@@ -1,0 +1,47 @@
+**** Table Rendering and Click Logic
+
+Data Structure: The table is populated using an array of chemical objects. Each object contains keys such as id,
+chemicalName, vendor, density, viscosity, packaging, packSize, unit, and quantity.
+Rendering: The renderTable() function creates table rows dynamically based on the array's data.
+It clears previous rows, iterates over the data, and creates a row (<tr>) for each chemical.
+
+****Click and Double-click Functionality
+Single Click for Row Selection: A single click on a row highlights it to indicate that it’s selected. 
+The clickTimeout variable helps distinguish between single and double clicks by adding a delay (debouncing). 
+When a row is clicked, the function waits for 200ms to check if a double-click event occurs. If not, the row is marked as selected.
+
+Double Click to Edit: If a double click occurs within the timeout period, the openEditModal() function is triggered, 
+allowing the user to edit the selected row.
+
+****Sorting Logic
+Sorting Mechanism: The sortTable() function toggles between ascending and descending order when a column header is clicked. 
+It uses an object sortDirection to keep track of the current sort order. After sorting, the table is re-rendered to reflect the new order.
+
+UI Feedback: CSS classes sort-asc and sort-desc are added to the header to visually indicate the current sort direction.
+
+****CRUD Operations
+Add Row: Adds a new row with default values when the user clicks the "add" button.
+
+Move Row Up/Down: The functions moveRowUp() and moveRowDown() allow users to move the selected row 
+within the table by swapping the selected row with the row above or below.
+
+Delete Row: The deleteRow() function removes the currently selected row from the array and re-renders the table.
+
+Refresh Table: The refreshTable() function resets the table to its initial state, restoring the data to its original form.
+
+Save Data: The saveData() function saves the current table data as a JSON string and logs it to the console.
+
+****Edit Modal
+Modal Handling: When a row is double-clicked, the openEditModal() function is triggered, displaying a modal form. 
+The form is prefilled with the selected row’s data, allowing the user to edit values. 
+The form fields are updated with the corresponding values from the selected chemical object.
+
+Saving Changes: The saveEdit() function updates the chemical object with the new values entered by the user,
+re-renders the table, and closes the modal.
+
+****Error Handling and UX
+Debouncing: To avoid conflict between single-click and double-click events, debouncing is used, 
+ensuring that a single click does not interfere with a double-click action.
+UI Feedback: The modal form, sorting indicators, and row highlight are all designed to give the user visual feedback about their actions.
+This approach ensures a user-friendly interface where users can intuitively 
+interact with the data while keeping the design simple and functional.

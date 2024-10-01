@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Table with Edit & PWA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+<div class="container">
+    <h1>Chemical supplies</h1>
+    <div class="toolbar">
+        <button onclick="addRow()">Add Row</button>
+        <button onclick="moveRowUp()">Move Up</button>
+        <button onclick="moveRowDown()">Move Down</button>
+        <button onclick="deleteRow()">Delete Row</button>
+        <button onclick="refreshTable()">Refresh</button>
+        <button onclick="saveData()">Save Data</button>
+    </div>
+
+
+    <table id="chemicalsTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable('id')">ID</th>
+                <th onclick="sortTable('chemicalName')">Chemical Name</th>
+                <th onclick="sortTable('vendor')">Vendor</th>
+                <th onclick="sortTable('density')">Density</th>
+                <th onclick="sortTable('viscosity')">Viscosity</th>
+                <th onclick="sortTable('packaging')">Packaging</th>
+                <th onclick="sortTable('packSize')">Pack Size</th>
+                <th onclick="sortTable('unit')">Unit</th>
+                <th onclick="sortTable('quantity')">Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Edit Chemical Data</h2>
+            <form id="editForm">
+                <label for="chemicalName">Chemical Name:</label>
+                <input type="text" id="chemicalName" name="chemicalName"><br><br>
+
+                <label for="vendor">Vendor:</label>
+                <input type="text" id="vendor" name="vendor"><br><br>
+
+                <label for="density">Density:</label>
+                <input type="text" id="density" name="density"><br><br>
+
+                <label for="viscosity">Viscosity:</label>
+                <input type="text" id="viscosity" name="viscosity"><br><br>
+
+                <label for="packaging">Packaging:</label>
+                <input type="text" id="packaging" name="packaging"><br><br>
+
+                <label for="packSize">Pack Size:</label>
+                <input type="number" id="packSize" name="packSize"><br><br>
+
+                <label for="unit">Unit:</label>
+                <input type="text" id="unit" name="unit"><br><br>
+
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity"><br><br>
+
+                <button type="button" onclick="saveEdit()">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
